@@ -3,12 +3,14 @@ const api = {
   key: "1f4962d008d809ec9657eec07e831933",
   base: "https://api.openweathermap.org/data/2.5/",
 };
+// Access Random Background Page style
 document.body.style.backgroundImage =
   "url('https://source.unsplash.com/1600x900/?" + "')";
+// Buttons and Event listener awaiting user-input
 const search = document.querySelector(".search");
 const btn = document.querySelector(".btn");
 btn.addEventListener("click", getInput);
-
+// awaiting user-input on City location
 function getInput(event) {
   event.preventDefault();
   if (event.type == "click") {
@@ -16,7 +18,7 @@ function getInput(event) {
     console.log(search.value);
   }
 }
-// Weather conversion
+// Weather conversion "Imperial"
 function getData() {
   fetch(`${api.base}weather?q=${search.value}&units=imperial&appid=${api.key}`)
     .then((response) => {
@@ -48,14 +50,13 @@ function displayData(response) {
     tempRange.innerText = `Temp Range: ${Math.round(
       response.main.temp_min
     )}°F / ${Math.round(response.main.temp_max)}°F`;
-
+    // Generates icon.png based on current weather
     const weatherIcon = document.querySelector(".weather-icon");
     const iconURL = "http://openweathermap.org/img/w/";
     weatherIcon.src = iconURL + response.weather[0].icon + ".png";
 
     search.value = "";
   }
-  
 }
 
 function dateFunction(d) {
