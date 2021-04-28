@@ -1,4 +1,4 @@
-// // GET WEATHER FROM API PROVIDER
+//Weather from API
 const api = {
   key: "1f4962d008d809ec9657eec07e831933",
   base: "https://api.openweathermap.org/data/2.5/",
@@ -26,7 +26,7 @@ function getData() {
     })
     .then(displayData);
 }
-// DISPLAY WEATHER TO UI
+//Displays weather to user interface
 function displayData(response) {
   if (response.cod === "404") {
     const error = document.querySelector(".error");
